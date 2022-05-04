@@ -1,11 +1,12 @@
 import sqlite3
 
+
 def get_name(pokemon_id):
     with sqlite3.connect("pokedex.sqlite") as conn:
         cursor = conn.cursor()
         cursor.execute(f"""SELECT p.identifier FROM pokemon p
 	    WHERE p.id = {pokemon_id}""")
-        name = cursor.fetchone()
+        name = cursor.fetchone()[0]
     return name
 
 def get_moves(pokemon_id):
@@ -17,7 +18,11 @@ def get_moves(pokemon_id):
 	    WHERE p.id = {pokemon_id} AND pm.version_group_id = 1
 	    LIMIT 5;""")
         moves = cursor.fetchall()
-    return moves
+        trim_moves= []
+        for move in moves:
+            move = move[0]
+            trim_moves.append(move)
+        return trim_moves
 
 def get_species_flavor_text(pokemon_id):
     with sqlite3.connect("pokedex.sqlite") as conn:
@@ -26,6 +31,6 @@ def get_species_flavor_text(pokemon_id):
 	    JOIN pokemon p ON p.species_id = psft.species_id
 	    WHERE p.id = {pokemon_id} AND psft.version_id = 1 
         AND psft.language_id = 9;""")
-        flavor_text = cursor.fetchone()
+        flavor_text = cursor.fetchone()[0]
     return flavor_text
 
