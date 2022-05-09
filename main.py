@@ -6,7 +6,7 @@ app = FastAPI()
 
 
 @app.get("/pokemon_sprite_for_guesser/{pokemon_id}")
-def get_url(pokemon_id):
+def get_pokemon_sprite_for_guesser_url(pokemon_id):
     api_url = "https://pokeapi.co/api/v2/pokemon/" + str(pokemon_id)
     #Get the data from the pokeapi 
     response = requests.get(api_url)
@@ -14,7 +14,7 @@ def get_url(pokemon_id):
     return {'link': link}
 
 @app.get("/pokemon_sprite_for_answer/{pokemon_id}")
-def get_url(pokemon_id):
+def get_pokemon_sprite_for_answer_url(pokemon_id):
     api_url = "https://pokeapi.co/api/v2/pokemon/" + str(pokemon_id)
     #Get the data from the pokeapi 
     response = requests.get(api_url)
