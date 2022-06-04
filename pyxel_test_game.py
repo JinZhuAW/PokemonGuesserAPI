@@ -5,7 +5,7 @@ import json
 from random import randint
 import urllib.request
 
-api_url = "http://127.0.0.1:8000/"
+api_url = "http://18.237.55.156:63375/"
 
 
 def get_pokemon_name(index):
@@ -170,7 +170,7 @@ class App:
                         self.hint1 = False
                     else:
                         moves = get_pokemon_moves(self.index)
-                        self.message = f"""Hint 2:\nThe pokemon's three moves:\n{moves[0]}\n{moves[1]}\n{moves[2]}\n\nPlease guess the pokemon's name\n(press a to get answer):\n\n"""
+                        self.message = f"Hint 2:\nThe pokemon's {len(moves)} moves:\n"+"\n".join(f"{move}" for move in moves) + "\n\nPlease guess the pokemon's name\n(press a to get answer):\n\n"
                         self.hint1 = True
 
                 else:    
