@@ -5,7 +5,7 @@ import json
 from random import randint
 import urllib.request
 
-api_url = "http://18.237.55.156:63375/"
+api_url = "http://54.212.129.126:63375/"
 
 
 def get_pokemon_name(index):
