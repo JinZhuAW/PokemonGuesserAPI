@@ -1,6 +1,8 @@
 # PokemonGuesserAPI
-A pokemon guesser API created using FastAPI for creating pokemon guesser game
-
+### A pokemon guesser API created using FastAPI for creating pokemon guesser game
+# Update 
+1. Added a pyxel game file "pyxel_test_game.py" to test and access the API
+2. Added Pulumi script /webserver/__main__.py to deploy the API server to an AWS EC2 instance (To run the script please install Pulumi and set up your AWS account first)  
 # Requirements
 1. Install FastAPI: pip install fastapi
 2. Install Uvicorn: pip install uvicorn
