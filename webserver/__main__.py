@@ -1,4 +1,4 @@
-'''Delpoy a backend server to AWS EC2 instance'''
+'''Deploy a backend server to AWS EC2 instance'''
 import pulumi
 import pulumi_aws as aws
 
@@ -27,13 +27,13 @@ uvicorn main:app --host 0.0.0.0 --port 63375
 #Create ec2 instance
 server = aws.ec2.Instance(resource_name='pokemon-guesser-game-backend-server',
     instance_type='t2.micro',
+    ami='ami-0ca285d4c2cda3300', # default amazon machine image
     tags={
         "Name": "PkmonGuesserGameAPI",
     },
     key_name='vockey',# default key pair used in the lab 
     vpc_security_group_ids=[group.id], # reference security group from above
     user_data=user_data, # reference user data from above
-    ami='ami-0ca285d4c2cda3300' # default amazon machine image
     )
 
 pulumi.export('publicIp', server.public_ip)
